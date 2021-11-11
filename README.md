@@ -1,4 +1,4 @@
-#Quantitative Trading via Machine Learning in the Chinese Stock Market
+# Quantitative Trading via Machine Learning in the Chinese Stock Market
 
 ## —— Course Final Project
 
