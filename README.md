@@ -158,7 +158,7 @@ Sample data picture:
 
 It is assumed that the past trading information indicates future return. The two-dimensional feature of CNN is desirable for this task because data pictures contain different kinds of variables and their time variation. However, CNN was originally designed to extract image information, which means CNN only focus on the partial  information of adjacent data points in our data pictures. So we've made some improvements here, we try different combinations of different rows of the data picture, and apply different functions to those combinations. Fianlly we get a collection of new data pictures derived from the different functions.  Here is the list of custom functions (Table 1).
 
-$$\text{Table 1. List of Functions and Their Description}$$
+* Table 1. List of Functions and Their Description *
 
 | Function       | Description                                                  |  Mapping Example   |
 | -------------- | :----------------------------------------------------------- | :----------------: |
@@ -177,7 +177,7 @@ The functions in Table 1 can be divided into two types.
 
 Suppose we set stride (parameter in CNN) to be equal to 5.
 
-1. The Figure 3 shows how the first type functions work. The function will slide between different rows which include adjacent rows and seperated rows to calculate the statistics like correlations and covariance (the number of rows of new data pictures becomes $C_{9}^{2}=36$). 
+1. The Figure 3 shows how the first type functions work. The function will slide between different rows which include adjacent rows and seperated rows to calculate the statistics like correlations and covariance (the number of rows of new data pictures becomes 36). 
 2. The Figure 4 shows how the first type functions work. The function will just slide across one row and calculate the statistics like mean and standard deviation (the number of rows of new data pictures is ​still 9).
 
 <img src="https://z3.ax1x.com/2021/07/23/WsQEVA.png" style="" width="600">
@@ -186,10 +186,7 @@ Suppose we set stride (parameter in CNN) to be equal to 5.
 
 #### 4.2 Batch Normalization
 
-Batch Mean : $\mu=\frac{1}{m} \sum_{l=0}^{m} Z^{l(i)}$
-Batch Std. Dev. : $\sigma^{2}=\frac{1}{m} \sum_{i=0}^{m}\left(Z^{l(i)}-\mu\right)^{2}$
-Normalized Result : $\hat{Z}^{l(i)}=\left(Z^{l(i)}-\mu\right) / \sigma$
-where $Z^{l}$ denotes the layer and $Z^{l(i)}$ denotes the elements in the layer.
+standardize data
 
 #### 4.3 Pipeline Structure
 
