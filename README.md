@@ -198,7 +198,7 @@ Here we combine CNN processing and Batch Normalization into Pipeline struction (
 
 #### 5.1 Pooling Layer
 
-$$\text{Table 2. List of Pooling Functions and Their Description}$$
+* Table 2. List of Pooling Functions and Their Description *
 
 | Function | Description                            | Mapping Example |
 | -------- | -------------------------------------- | --------------- |
