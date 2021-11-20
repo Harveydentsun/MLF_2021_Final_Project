@@ -186,12 +186,9 @@ Suppose we set stride (parameter in CNN) to be equal to 5.
 
 #### 4.2 Batch Normalization
 
-$$\text{Batch Mean : } \mu = \frac{1}{m} \sum_{l=0}^m Z^{l(i)}$$
-
-$$\text{Batch Std. Dev. : } \sigma^2 = \frac{1}{m} \sum_{i=0}^m (Z^{l(i)}-\mu)^2$$
-
-$$\text{Normalized Result : } \hat Z^{l(i)} = (Z^{l(i)} - \mu)/\sigma$$
-
+Batch Mean : $\mu=\frac{1}{m} \sum_{l=0}^{m} Z^{l(i)}$
+Batch Std. Dev. : $\sigma^{2}=\frac{1}{m} \sum_{i=0}^{m}\left(Z^{l(i)}-\mu\right)^{2}$
+Normalized Result : $\hat{Z}^{l(i)}=\left(Z^{l(i)}-\mu\right) / \sigma$
 where $Z^{l}$ denotes the layer and $Z^{l(i)}$ denotes the elements in the layer.
 
 #### 4.3 Pipeline Structure
