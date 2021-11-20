@@ -300,7 +300,7 @@ It can be observed from the following results that the baseline model perform ju
 |   11 |    202012 | -0.025818 |    -0.309811 |   -0.045919 |  -3.020179 | 0.428571 |    -0.009915 |          -0.118982 |
 |   12 |     Total |  0.126301 |     0.126301 |   -0.165017 |   0.533388 | 0.558442 |     0.027099 |           0.027099 |
 
-<img src="D:\Postgraduate_Course_Information\module5\mlf/baseline_model_picture.png" style="" width="">
+<img src="D:\Postgraduate_Course_Information\module5\mlf/baseline_model_picture.png" style="" >
 
 
 
