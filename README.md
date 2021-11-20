@@ -218,7 +218,7 @@ The network architecture is feature input layers + fully connected dense layer. 
 
 The flattened features are then fed into a dense layer with 64 units. The number of neurons in the hidden layer is not restrained, but the literature recommends setting it at an even power of 2, such as 64, 32, etc. for accelerating GPU/CPU calculations (Vanhoucke and Senior, 2011), and hence the 64 units.
 
-<img src="D:\Postgraduate_Course_Information\module5\mlf\WsoKAO.png" width="">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/WsoKAO.png" width="">
 
 #### 5.3 Model Setting
 
@@ -301,7 +301,7 @@ It can be observed from the following results that the baseline model perform ju
 |   12 |     Total |  0.126301 |     0.126301 |   -0.165017 |   0.533388 | 0.558442 |     0.027099 |           0.027099 |
 
 
-<img src="D:\Postgraduate_Course_Information\module5\mlf/baseline_model_picture.png" style="" width="">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/baseline_model_picture.png" style="" width="">
 
 
 
