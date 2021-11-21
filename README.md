@@ -280,25 +280,58 @@ In order to compare the performance of our model, we first constructs a baseline
 
 It can be observed from the following results that the baseline model perform just as good as our benchmark index 000001.SH.
 
-|      | yearMonth |    return | annualReturn | maxDrawDown |     Sharpe |  winRate | excessReturn | annualExcessReturn |
-| ---: | --------: | --------: | -----------: | ----------: | ---------: | -------: | -----------: | -----------------: |
-|    0 |    202001 | -0.046604 |    -0.559254 |   -0.046604 | -15.315219 | 0.333333 |     -0.01487 |          -0.178444 |
-|    1 |    202002 |  0.051131 |     0.613571 |   -0.053999 |   1.447644 |      0.7 |     0.104556 |            1.25467 |
-|    2 |    202003 | -0.097726 |    -1.172713 |   -0.149902 |  -2.991332 |      0.5 |    -0.037124 |          -0.445485 |
-|    3 |    202004 |  -0.00638 |    -0.076566 |   -0.067236 |  -0.379082 |  0.47619 |    -0.042573 |          -0.510874 |
-|    4 |    202005 |  0.048727 |     0.584723 |   -0.044966 |     4.1436 | 0.611111 |     0.039719 |           0.476623 |
-|    5 |    202006 |  0.116548 |     1.398571 |   -0.011351 |   10.43633 |     0.65 |     0.063216 |            0.75859 |
-|    6 |    202007 |  0.153756 |     1.845073 |    -0.06958 |   5.656122 | 0.608696 |     0.059979 |           0.719745 |
-|    7 |    202008 |  0.048246 |     0.578948 |   -0.058144 |   2.181778 | 0.714286 |     0.017945 |           0.215345 |
-|    8 |    202009 | -0.067682 |    -0.812185 |   -0.092533 |  -4.763138 | 0.590909 |    -0.021304 |          -0.255646 |
-|    9 |    202010 |  0.018418 |      0.22102 |    -0.06702 |   1.235858 |    0.625 |     0.003058 |           0.036697 |
-|   10 |    202011 | -0.042985 |     -0.51582 |   -0.049109 |  -3.601519 | 0.333333 |    -0.076658 |          -0.919902 |
-|   11 |    202012 | -0.025818 |    -0.309811 |   -0.045919 |  -3.020179 | 0.428571 |    -0.009915 |          -0.118982 |
-|   12 |     Total |  0.126301 |     0.126301 |   -0.165017 |   0.533388 | 0.558442 |     0.027099 |           0.027099 |
-
-
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/baseline_model_performance.png" style="" width="">
 <img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/baseline_model_picture.png" style="" width="">
 
+#### 6.2 CNN Model
+
+We build out CNN model follow the steps above.
+
+**Structure**
+
+- The first hidden layer consists of:
+  - Feature Engineering Layer
+- The second hidden layer consists of:
+  - Batch Normalization Layer
+- The third layer consists of:
+  - Pooling Layer
+- The fourth hidden layer consists of:
+  - Batch Normalization Layer
+- we flatten the output of the second and the fourth layer as the input of the dense layer
+- The dense layer consists of:
+  - 90 neurons
+  - ReLU activation function
+  - 50% dropout
+- The output layer consists of:
+  - 1 neurons
+  - linear activation function
+
+**CNN Performance**
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/CNN_performance.png" style="" width="">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/CNN_model_picture.png" style="" width="">
+
+
+#### 6.3 LSTM Model
+
+The CNN version forgoes the temporal informaiton embeded in the feature map. We gauge that there might be great potential in exploiting the information carried in the sequence. Therefore, the beta version use a recurrent neural network - LSTM to leverage temporal sequnces.
+
+Different from the Dense layers, the input shape of the LSTM network is (observations, time, features). We don't do any feature engineering. Instead, we directly input the data picture, whose dimension is time*features, to the LSTM layers.The input features are price and volume features including open, high, low, close, turnver, etc.
+
+**Structure**
+
+- The LSTM layer consists of:
+  - 30 neurons
+  - Timesteps: 30
+  - 50% dropout
+- The Dense layer consists of:
+  - 30 neurons
+  - ReLU activation function
+  - 50% dropout
+- The output layer consists of:
+  - 1 neurons
+  - linear activation function
+
+**LSTM Model Performance
 
 
 
