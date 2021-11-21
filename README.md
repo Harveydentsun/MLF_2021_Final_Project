@@ -329,7 +329,7 @@ We build out CNN model follow the steps above.
   - Batch Normalization Layer
 - we flatten the output of the second and the fourth layer as the input of the dense layer
 - The dense layer consists of:
-  - 90 neurons
+  - 30 neurons
   - ReLU activation function
   - 50% dropout
 - The output layer consists of:
