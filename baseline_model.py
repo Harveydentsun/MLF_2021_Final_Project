@@ -101,42 +101,39 @@ def baseline_result(begin_t: str, end_t: str):
     end_n = np.argmax(date_list[date_list <= pd.to_datetime(end_t)])
     # predicting results
     df_predict = pd.DataFrame(columns=['date', 'stock', 'score'])
-    sig = True
     for n in tqdm(np.arange(begin_n, end_n, 10)):
         # Training inputs for baseline model, start from 12 days before.
         # The reason is that to trade in t, we can only use t-1 data to predict, then training
         # data should started from t-12 (with return label from t-11 to t-1)
-        if sig:
-            x_train_raw = []
-            y_train = []
-            for i in np.arange(n - 12, n - 512, -5):
-                t = pd.to_datetime(date_list[i]).strftime('%Y%m%d')
-                X_t = np.load("pictures/X_%s.npy" % t)
-                Y_t = np.load("pictures/Y_%s.npy" % t)
-                if len(x_train_raw):
-                    x_train_raw = np.concatenate((x_train_raw, X_t), axis=0)
-                else:
-                    x_train_raw = X_t
-                if len(y_train):
-                    y_train = np.concatenate((y_train, Y_t), axis=0)
-                else:
-                    y_train = Y_t
-            x_train_raw = x_train_raw.reshape(x_train_raw.shape[0], 270)
+        x_train_raw = []
+        y_train = []
+        for i in np.arange(n - 12, n - 512, -5):
+            t = pd.to_datetime(date_list[i]).strftime('%Y%m%d')
+            X_t = np.load("pictures/X_%s.npy" % t)
+            Y_t = np.load("pictures/Y_%s.npy" % t)
+            if len(x_train_raw):
+                x_train_raw = np.concatenate((x_train_raw, X_t), axis=0)
+            else:
+                x_train_raw = X_t
+            if len(y_train):
+                y_train = np.concatenate((y_train, Y_t), axis=0)
+            else:
+                y_train = Y_t
+        x_train_raw = x_train_raw.reshape(x_train_raw.shape[0], 270)
 
-            # delete nan and inf data
-            isnum = ~ (np.isnan(x_train_raw).max(axis=1) | np.isinf(x_train_raw).max(axis=1))
-            x_train_raw = x_train_raw[isnum]
-            y_train = y_train[isnum]
+        # delete nan and inf data
+        isnum = ~ (np.isnan(x_train_raw).max(axis=1) | np.isinf(x_train_raw).max(axis=1))
+        x_train_raw = x_train_raw[isnum]
+        y_train = y_train[isnum]
 
-            # shuffle data
-            shuffle = np.random.permutation(x_train_raw.shape[0])
-            x_train_raw = x_train_raw[shuffle]
-            y_train = y_train[shuffle]
+        # shuffle data
+        shuffle = np.random.permutation(x_train_raw.shape[0])
+        x_train_raw = x_train_raw[shuffle]
+        y_train = y_train[shuffle]
 
-            # Model training
-            selector = BaselineModel('baseline_selector_on_%s' % t, config, fit_config)
-            selector.fit(x_train_raw, y_train)
-        sig = not sig
+        # Model training
+        selector = BaselineModel('baseline_selector_on_%s' % t, config, fit_config)
+        selector.fit(x_train_raw, y_train)
 
         # predicting today's label
         # this should use t-1 data to predict!
