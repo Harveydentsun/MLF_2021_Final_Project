@@ -214,7 +214,7 @@ After feature engineering layers, we will flatten all features, disgarding the t
 
 The flattened features are then fed into a dense layer with 30 units. The number of neurons in the hidden layer is not restrained, we will use the same setting as the *Huatai Report*.
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/model%20structure%20new.png" width="">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Model.png" width="">
 
 #### 5.3 Model Setting
 
@@ -279,6 +279,17 @@ In order to compare the performance of our model, we first constructs a baseline
 **Baseline Performace**
 
 It can be observed from the following results that the baseline model perform just as good as our benchmark index 000001.SH.
+|  | yearMonth | return | annualReturn | maxDrawDown | Sharpe | winRate | excessReturn | annualExcessReturn |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 0 | 201901 | -0.074239 | -0.890863 | -0.131091 | -3.4875 | 0.318182 | -0.122623 | -1.471475 |
+| 1 | 201902 | 0.279067 | 3.348798 | -0.004763 | 17.929561 | 0.533333 | 0.135285 | 1.623425 |
+| 2 | 201903 | 0.10134 | 1.216079 | -0.051587 | 3.374518 | 0.571429 | 0.097339 | 1.168064 |
+| 3 | 201904 | -0.049188 | -0.590253 | -0.137591 | -1.84286 | 0.52381 | -0.074617 | -0.895408 |
+| 4 | 201905 | -0.077333 | -0.927995 | -0.062951 | -3.535548 | 0.5 | -0.035777 | -0.429318 |
+| 5 | 201906 | 0.001987 | 0.023846 | -0.049767 | 0.130318 | 0.473684 | -0.011722 | -0.140661 |
+| 7 | 201907 | -0.038473 | -0.461671 | -0.087604 | -2.175366 | 0.434783 | -0.025668 | -0.308012 |
+| 9 | 201908 | 0.019658 | 0.235898 | -0.075042 | 0.902594 | 0.681818 | 0.037215 | 0.45 |
+| 11 | 201910 | 0.021537 | 0.258444 | -0.034715 | 1.589567 | 0.5 | 0.00936 | 0.05 |
 
 |    | yearMonth   |      return |   annualReturn |   maxDrawDown |    Sharpe |   winRate |   excessReturn |   annualExcessReturn |
 |---:|:------------|------------:|---------------:|--------------:|----------:|----------:|---------------:|---------------------:|
