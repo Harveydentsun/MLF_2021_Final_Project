@@ -94,7 +94,7 @@ def lstm_result(begin_t: str, end_t: str):
     }
 
     fit_config = {
-        'batch_size': 2560,
+        'batch_size': 2000,
         'epochs': 10000,
     }
     # read data
