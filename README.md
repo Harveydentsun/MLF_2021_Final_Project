@@ -7,7 +7,7 @@
 *author: Bo Sun, Xinran Guo*
 
 * Jupyter notebook: [MLF Final Project](MLF_Final_Project.ipynb)
-* Reference research paper: [Huatai paper](华泰人工智能系列三十二：alphanet：因子挖掘神经网络_2020-06-15_华泰证券.pdf)
+* Reference research paper: [Huatai paper](reference/华泰人工智能系列三十二：alphanet：因子挖掘神经网络_2020-06-15_华泰证券.pdf)
 
 ------
 
