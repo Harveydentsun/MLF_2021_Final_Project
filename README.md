@@ -180,9 +180,9 @@ Suppose we set stride (parameter in CNN) to be equal to 5.
 1. The Figure 3 shows how the first type functions work. The function will slide between different rows which include adjacent rows and seperated rows to calculate the statistics like correlations and covariance (the number of rows of new data pictures becomes 36). 
 2. The Figure 4 shows how the first type functions work. The function will just slide across one row and calculate the statistics like mean and standard deviation (the number of rows of new data pictures is ​still 9).
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%203.png" style="" width="600">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%203%20new.png" style="" width="600">
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%204.png" style="" width="600">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%204%20new.png" style="" width="600">
 
 #### 4.2 Batch Normalization
 
@@ -192,7 +192,7 @@ standardize data
 
 Here we combine CNN processing and Batch Normalization into Pipeline struction (Figure 5), we can see that each function generate a new data picture as our output. 
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%205.png" style="" width="600">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%205%20new.png" style="" width="600">
 
 ### 5. Neural Network Architecture
 
@@ -212,7 +212,7 @@ The network architecture is feature input layers + fully connected dense layer. 
 
 The flattened features are then fed into a dense layer with 64 units. The number of neurons in the hidden layer is not restrained, but the literature recommends setting it at an even power of 2, such as 64, 32, etc. for accelerating GPU/CPU calculations (Vanhoucke and Senior, 2011), and hence the 64 units.
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%205.png" width="">
+<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/model%20structure.png" width="">
 
 #### 5.3 Model Setting
 
