@@ -180,9 +180,9 @@ Suppose we set stride (parameter in CNN) to be equal to 5.
 1. The Figure 3 shows how the first type functions work. The function will slide between different rows which include adjacent rows and seperated rows to calculate the statistics like correlations and covariance (the number of rows of new data pictures becomes 36). 
 2. The Figure 4 shows how the first type functions work. The function will just slide across one row and calculate the statistics like mean and standard deviation (the number of rows of new data pictures is ​still 9).
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%203%20new.png" style="" width="600">
+<img src="reference/Figure%203%20new.png" style="" width="600">
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%204%20new.png" style="" width="600">
+<img src="reference/Figure%204%20new.png" style="" width="600">
 
 #### 4.2 Batch Normalization
 
@@ -192,7 +192,7 @@ standardize data
 
 Here we combine CNN processing and Batch Normalization into Pipeline struction (Figure 5), we can see that each function generate a new data picture as our output. 
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Figure%205%20new.png" style="" width="600">
+<img src="reference/Figure%205%20new.png" style="" width="600">
 
 ### 5. Neural Network Architecture
 
@@ -214,7 +214,7 @@ After feature engineering layers, we will flatten all features, disgarding the t
 
 The flattened features are then fed into a dense layer with 30 units. The number of neurons in the hidden layer is not restrained, we will use the same setting as the *Huatai Report*.
 
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/Model.png" width="">
+<img src="reference/Model.png" width="">
 
 #### 5.3 Model Setting
 
@@ -308,7 +308,7 @@ It can be observed from the following results that the baseline model perform ju
 | 22 | 202011      | -0.0251234  |     -0.301481  |    -0.0559316 | -1.84565  |  0.380952 |    -0.065724   |           -0.788687  |
 | 23 | 202012      | -0.0104235  |     -0.125082  |    -0.0240164 | -1.57527  |  0.588235 |    -0.00183029 |           -0.0219634 |
 | 24 | Total       |  0.508001   |      0.254001  |    -0.293088  |  0.872737 |  0.525988 |     0.136025   |            0.0680127 |
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/baseline_model_picture.png" style="" width="">
+<img src="reference/baseline_model_picture.png" style="" width="">
 
 #### 6.2 CNN Model
 
@@ -363,7 +363,7 @@ We build out CNN model follow the steps above.
 | 22 | 202011      | -0.00994727 |     -0.119367  |   -0.0456737  | -0.731928 |  0.380952 |    -0.0461961  |           -0.554353  |
 | 23 | 202012      |  0.047207   |      0.566483  |   -0.00370597 | 10.3887   |  0.705882 |     0.0819828  |            0.983793  |
 | 24 | Total       |  0.774414   |      0.387207  |   -0.222813   |  1.33822  |  0.52183  |     0.402438   |            0.201219  |
-<img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/CNN_model_picture.png" style="" width="">
+<img src="reference/CNN_model_picture.png" style="" width="">
 
 
 #### 6.3 LSTM Model
