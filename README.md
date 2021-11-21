@@ -8,7 +8,7 @@
 
 * Jupyter notebook: [MLF Final Project](MLF_Final_Project.ipynb)
   
-* Full data: [BaiduYun Disk]("https://pan.baidu.com/s/1mPXVN1QF_gMfMrLIMUSLOg") (extraction code: `jxee`)
+* Full data: [BaiduYun Disk](https://pan.baidu.com/s/1mPXVN1QF_gMfMrLIMUSLOg) (extraction code: `jxee`)
   
 * Reference research paper: [Huatai paper](reference/华泰人工智能系列三十二：alphanet：因子挖掘神经网络_2020-06-15_华泰证券.pdf)
 
