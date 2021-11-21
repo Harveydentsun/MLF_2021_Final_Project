@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 import numpy as np
 import pandas as pd
 from pandas import to_datetime as tdt, Timestamp as tp
@@ -9,7 +8,23 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 
-class BackTest():
+class BackTest:
+    """
+    A class designed for machine learning model backtesting
+
+    Parameters
+    ----------------
+    dfScore : DataFrame, containing the predicted stock return.
+
+    begt: datetime, backtest begin date. Can be specified or empty.
+
+    endt: datetime, backtest begin date. Can be specified or empty.
+
+    n: int, the number of stocks selected in daily portfolio.
+
+    fee: int, transaction fee. Default 0.2%
+    ----------------
+    """
     # initialize class
     def __init__(self, dfScore, begt=np.nan, endt=np.nan, n=30, freq=10, fee=0.002):
         self.dfScore = dfScore
@@ -179,7 +194,7 @@ class BackTest():
 
 if __name__ == "__main__":
     config = {
-        'file':"2020-01-01-2020-12-31.parquet"
+        'file': "Baseline_2018-01-01_2020-12-31.parquet"
     }
 
     prediction = pd.read_parquet(Path("predictions")/config['file'])
