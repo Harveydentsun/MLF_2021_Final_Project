@@ -88,13 +88,13 @@ def lstm_result(begin_t: str, end_t: str):
     # Model config
     config = {
         'model_path': Path('models'),
-        'learning_rate': 0.002,
+        'learning_rate': 0.01,
         'loss': 'mse',
         'metrics': 'mse',
     }
 
     fit_config = {
-        'batch_size': 2000,
+        'batch_size': 2560,
         'epochs': 10000,
     }
     # read data
@@ -107,7 +107,7 @@ def lstm_result(begin_t: str, end_t: str):
     df_predict = pd.DataFrame(columns=['date', 'stock', 'score'])
     sig = 0
     for n in tqdm(np.arange(begin_n, end_n, 10)):
-        if sig % 6 == 0:
+        if sig % 12 == 0:
             # Training inputs for LSTM model, start from 12 days before.
             # The reason is that to trade in t, we can only use t-1 data to predict, then training
             # data should started from t-12 (with return label from t-11 to t-1)
