@@ -88,7 +88,7 @@ def lstm_result(begin_t: str, end_t: str):
     # Model config
     config = {
         'model_path': Path('models'),
-        'learning_rate': 0.01,
+        'learning_rate': 0.002,
         'loss': 'mse',
         'metrics': 'mse',
     }
@@ -105,41 +105,38 @@ def lstm_result(begin_t: str, end_t: str):
     end_n = np.argmax(date_list[date_list <= pd.to_datetime(end_t)])
     # predicting results
     df_predict = pd.DataFrame(columns=['date', 'stock', 'score'])
-    sig = 0
     for n in tqdm(np.arange(begin_n, end_n, 10)):
-        if sig % 12 == 0:
-            # Training inputs for LSTM model, start from 12 days before.
-            # The reason is that to trade in t, we can only use t-1 data to predict, then training
-            # data should started from t-12 (with return label from t-11 to t-1)
-            x_train_raw = []
-            y_train = []
-            for i in np.arange(n - 12, n - 512, -5):
-                t = pd.to_datetime(date_list[i]).strftime('%Y%m%d')
-                X_t = np.load("pictures/X_%s.npy" % t)
-                Y_t = np.load("pictures/Y_%s.npy" % t)
-                if len(x_train_raw):
-                    x_train_raw = np.concatenate((x_train_raw, X_t), axis=0)
-                else:
-                    x_train_raw = X_t
-                if len(y_train):
-                    y_train = np.concatenate((y_train, Y_t), axis=0)
-                else:
-                    y_train = Y_t
+        # Training inputs for LSTM model, start from 12 days before.
+        # The reason is that to trade in t, we can only use t-1 data to predict, then training
+        # data should started from t-12 (with return label from t-11 to t-1)
+        x_train_raw = []
+        y_train = []
+        for i in np.arange(n - 12, n - 512, -5):
+            t = pd.to_datetime(date_list[i]).strftime('%Y%m%d')
+            X_t = np.load("pictures/X_%s.npy" % t)
+            Y_t = np.load("pictures/Y_%s.npy" % t)
+            if len(x_train_raw):
+                x_train_raw = np.concatenate((x_train_raw, X_t), axis=0)
+            else:
+                x_train_raw = X_t
+            if len(y_train):
+                y_train = np.concatenate((y_train, Y_t), axis=0)
+            else:
+                y_train = Y_t
 
-            # delete nan and inf data
-            isnum = ~ (np.isnan(x_train_raw).max(axis=(1,2)) | np.isinf(x_train_raw).max(axis=(1,2)))
-            x_train_raw = x_train_raw[isnum]
-            y_train = y_train[isnum]
+        # delete nan and inf data
+        isnum = ~ (np.isnan(x_train_raw).max(axis=(1,2)) | np.isinf(x_train_raw).max(axis=(1,2)))
+        x_train_raw = x_train_raw[isnum]
+        y_train = y_train[isnum]
 
-            # shuffle data
-            shuffle = np.random.permutation(x_train_raw.shape[0])
-            x_train_raw = x_train_raw[shuffle]
-            y_train = y_train[shuffle]
+        # shuffle data
+        shuffle = np.random.permutation(x_train_raw.shape[0])
+        x_train_raw = x_train_raw[shuffle]
+        y_train = y_train[shuffle]
 
-            # Model training
-            selector = LSTMModel('LSTM_selector_on_%s' % t, config, fit_config)
-            selector.fit(x_train_raw, y_train)
-        sig += 1
+        # Model training
+        selector = LSTMModel('LSTM_selector_on_%s' % t, config, fit_config)
+        selector.fit(x_train_raw, y_train)
 
         # predicting today's label
         predict_t = pd.to_datetime(date_list[n]).strftime('%Y%m%d')
@@ -158,7 +155,7 @@ def lstm_result(begin_t: str, end_t: str):
 
     # save all predictions to /predictions as .parquet file
     df_predict = df_predict.set_index(['date', 'stock'])
-    df_predict.to_parquet("predictions/LSTM_%s_%s.parquet" % (begt, endt))
+    df_predict.to_parquet("predictions/LSTM_%s_%s.parquet" % (begin_t, end_t))
 
     # Backtest based on model prediction
     bt = BackTest(df_predict)
