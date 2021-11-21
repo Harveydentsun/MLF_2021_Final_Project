@@ -55,7 +55,7 @@ In order to use CNN model, we need to convert our data to "data pictures" that s
 
 **Stock universe :** All Chinese A-share main board stocks, excluding newly-listed stocks, ST and PT stocks, and all stocks that are suspended or hit price limits in the following trading day.
 
-**Time span :** Starting from January 31, 2011 to May 29, 2020, we use past 1500 days data as input, among which 1200 days are training period, and the remaining 300 days are validation periods.
+**Time span :** Starting from 2011, we use past 500 trade days data as training period input.
 
 **Variables :**
 
@@ -208,9 +208,11 @@ Here we combine CNN processing and Batch Normalization into Pipeline struction (
 
 #### 5.2 Model Structure
 
-The network architecture is feature input layers + fully connected dense layer. The model structure of Stock-Selector-Alpha is shown below. After feature engineering layers, StockSelector-Alpha will flatten all features, disgarding the temporal information.
+The network architecture is feature input layers + fully connected dense layer. The model structure of our CNN Model is shown below. 
 
-The flattened features are then fed into a dense layer with 64 units. The number of neurons in the hidden layer is not restrained, but the literature recommends setting it at an even power of 2, such as 64, 32, etc. for accelerating GPU/CPU calculations (Vanhoucke and Senior, 2011), and hence the 64 units.
+After feature engineering layers, we will flatten all features, disgarding the temporal information. 
+
+The flattened features are then fed into a dense layer with 30 units. The number of neurons in the hidden layer is not restrained, we will use the same setting as the *Huatai Report*.
 
 <img src="https://github.com/XinranGuo/PHBS_MLF_2021/blob/main/Final_Project_Picture/model%20structure%20new.png" width="">
 
@@ -240,7 +242,7 @@ We use three regularization methods from the literature to mitigate overfitting
 
 3. Dropout
 
-   Dropout is a technique that literally “drop out” a certain portion of neurons. Dropout is a potent regularization method and has proved its value in computer vision. This can prevent the networks from getting too convoluted by randomly setting a specific proportion of neurons in each layer to 0. The dropout rate in the input layer is 20%, and in the hidden layer is 50%. It needs to be particularly emphasized that we enlarge the number of neurons accordingly. we adjust the number of neurons to be the original neuron number dividing the dropout rate. For example, if the dropout rate is 50% and the original number of neurons is 32, then the new number of neurons is 52/0.5 = 64.
+   Dropout is a technique that literally “drop out” a certain portion of neurons. Dropout is a potent regularization method and has proved its value in computer vision. This can prevent the networks from getting too convoluted by randomly setting a specific proportion of neurons in each layer to 0. The dropout rate in the hidden layer is 50%. It needs to be particularly emphasized that we enlarge the number of neurons accordingly. we adjust the number of neurons to be the original neuron number dividing the dropout rate. For example, if the dropout rate is 50% and the original number of neurons is 15, then the new number of neurons is 15/0.5 = 30.
 
 ### 6. Backtesting
 
@@ -251,11 +253,11 @@ In order to compare the performance of our model, we first constructs a baseline
 **Structure**
 
 - The first hidden layer consists of:
-  - 90 neurons
+  - 30 neurons
   - ReLU activation function
   - 50% dropout
 - The second hidden layer consists of:
-  - 30 neurons
+  - 10 neurons
   - ReLU activation function
   - 50% dropout
 - The output layer consists of:
